@@ -50,14 +50,19 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: CustomGestureDetector(
-          axis: CustomGestureDetector.AXIS_Y,
-          velocity: threshold,
+        // memanggil scroll ketika akan melakukan perubaahan axis 
+        body: CustomGestureDetector( 
+          // set axis default is y 
+          axis: CustomGestureDetector.AXIS_Y, 
+          //set default treshold 
+          velocity: threshold, 
+          // mengatur value ketika terjadi sweife up 
           onSwipeUp: (){
             this.setState((){
               showBottomMenu = true;
             });
-          },
+          }, 
+          // mengatur value ketika terjadi swifeDown
           onSwipeDown: (){
             this.setState((){
               showBottomMenu = false;
@@ -75,7 +80,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: MediaQuery.of(context).size.height * 0.90,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                        children: <Widget>[ 
+                          // give title 
                           Text(
                             "RPS",
                             style: TextStyle(
@@ -85,7 +91,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(
                             height: 20,
-                          ),
+                          ), 
+                          // make textfield 
                           TextField(
                             maxLines: 1,
                             controller: _emailController,
@@ -105,7 +112,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(
                             height: 10,
-                          ),
+                          ), 
+                          // passwword 
                           TextField(
                             maxLines: 1,
                             controller: _passController,
@@ -126,7 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           SizedBox(
                             height: 10,
-                          ),
+                          ), 
+                          // confirm password 
                           TextField(
                             maxLines: 1,
                             controller: _passController,
@@ -150,16 +159,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextField(
                             maxLines: 1,
-                            controller: _passController,
-                            obscureText: true,
+                            controller: _passController, 
+                            // set textfield tidak disembunyikan 
+                            obscureText: false,
                             cursorColor: _currentTheme.accentColor,
                             decoration: InputDecoration(
                               hintText: "Full Name",
-                              errorText: (_passError) ? "Invalid Password" : null,
+                              errorText: (_passError) ? "Invalid Password" : null, 
+                              // pluss icon 
                               prefixIcon: Icon(
                                 Icons.person_pin,
                                 color: _currentTheme.primaryColor,
-                              ),
+                              ), 
+                              // add underline input border 
                               border: UnderlineInputBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10.0))),
@@ -242,6 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 
+                // set animation 
                 AnimatedOpacity(
                   duration: Duration(milliseconds: 200),
                   opacity: (showBottomMenu)?1.0:0.0,
